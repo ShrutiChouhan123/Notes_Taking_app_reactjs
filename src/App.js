@@ -8,9 +8,13 @@ function App() {
   let addNote = () => {
     setaddnotes(true)
     // console.log(title)
-    setlist([...list, { title }]); // Add a new note to the list
+    setlist([...list, { title:title }]); 
     settitle('')
     console.log(list)
+  }
+  let Delete=(index)=>{
+     let res = list.splice(index,1)
+     setlist([...list, { title:title }])
   }
   return (
     <>
@@ -26,9 +30,14 @@ function App() {
               ></input>
               <div style={{ marginTop: "100px",width:"22rem",background:"white",height:"300px",color:"black" }}>
                 {list.map((note, index) => (
+                  <table>
                    <tr>
                     <td className='notes'>{note.title}</td>
                    </tr>
+                   <tr>
+                    <td><button onClick={()=>Delete(index)}>Delete</button></td>
+                   </tr>
+                   </table>
                 ))}
                
               </div>
@@ -45,9 +54,7 @@ function App() {
       </div>
       <div id="main">
       </div>
-      <div>
-
-      </div>
+      
 
     </>
   )
